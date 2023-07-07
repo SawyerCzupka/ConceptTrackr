@@ -11,10 +11,10 @@ from sentence_transformers import SentenceTransformer
 
 
 class OccurrenceSearcher:
-    def __init__(self, issue: str, collection_name, database_host='localhost', database_port=6333, ):
+    def __init__(self, issue: str):
         self.issue = issue
 
-        self.client = QdrantClient(host=database_host, port=database_port)
+        self.client = QdrantClient(":memory:")  # Run database in memory for testing
         self.searchModel = SentenceTransformer('all-mpnet-base-v2')
 
     def getIssueEmbedding(self):
