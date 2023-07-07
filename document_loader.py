@@ -8,11 +8,11 @@ import os
 import uuid
 from typing import List
 
-from langchain.document_loaders import PDFPlumberLoader
+from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
 
 
 class DocumentLoader:
-    def __init__(self, pdfLoader=PDFPlumberLoader):  # TODO address duplicates produced by PDFPlumber
+    def __init__(self, pdfLoader=PDFPlumberLoader):
         self.pdfLoader = pdfLoader
         self.id_gen = self.unique_id_generator()
 
@@ -24,15 +24,15 @@ class DocumentLoader:
         docs = self.pdfLoader(path).load()
 
         if documentID:
-            [doc.metadata.update({'documentID': documentID, 'content': doc.page_content}) for doc in docs]
+            [doc.metadata.update({'documentID': documentID}) for doc in docs]
 
         return docs
 
     def load_pdfs(self, directory):
-        docs = []
+        file_docs = []
         for file in [file for file in os.listdir(directory) if file.endswith(".pdf")]:
-            logging.debug(f"File: '{directory + file}'")
+            logging.info(f"File: '{directory + file}'")
 
-            docs.extend(self.load_pdf(str(directory + file), documentID=next(self.id_gen)))
+            file_docs.extend(self.load_pdf(str(directory + file), documentID=next(self.id_gen)))
 
-        return docs
+        return file_docs
