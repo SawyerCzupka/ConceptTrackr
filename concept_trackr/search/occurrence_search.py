@@ -7,7 +7,7 @@ This makes the following assumptions about the Vector Database:
 """
 import os
 
-from database_interface import QdrantDatabase
+from concept_trackr.databases.database_interface import QdrantDatabase
 from dotenv import load_dotenv
 from qdrant_client import models
 

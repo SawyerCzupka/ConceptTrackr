@@ -1,4 +1,4 @@
-from occurrence_search import OccurrenceSearcher
+from concept_trackr.search.occurrence_search import OccurrenceSearcher
 
 if __name__ == "__main__":
     searcher = OccurrenceSearcher(issue="How is air pollution mentioned?", threshold=10)

@@ -14,9 +14,10 @@ from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
 class DocumentLoader:
     def __init__(self, pdfLoader=PDFPlumberLoader):
         self.pdfLoader = pdfLoader
-        self.id_gen = self.unique_id_generator()
+        self.id_gen = self._unique_id_generator()
 
-    def unique_id_generator(self):
+    @staticmethod
+    def _unique_id_generator():
         while True:
             yield str(uuid.uuid4())
 
