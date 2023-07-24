@@ -1,0 +1,187 @@
+C:\Users\Sawyer\anaconda3\envs\ConceptTrackr\python.exe "D:\05 Programming\GitHub\ConceptTrackr\context_script.py"
+<<SYS>>
+ You are an advanced language model tasked with analyzing a database of documents to identify the most common context in which a certain issue is mentioned. You will receive document chunks one by one, and your goal is to provide a concise summary of the key themes and contexts related to the given issue across the documents.
+<</SYS>>
+
+ [INST] Please analyze the following document chunk and identify any relevant information related
+        to the issue of water management. Include key points, important details, and any context that can contribute to the comprehensive summary
+
+Document Chunk: iii) promoting new water sources; iv) promoting participatory management of water resources; and iv) raising public awareness
+about water consumption. The TNC identifies surface water mobilisation as an important goal for Djibouti, which is already a focus
+of several planned and implemented studies on reservoirs, excavations, buried tanks and dams. In addition, the TNC highlights the
+benefits of the integrated water resource management (IWRM) approach, which enhances coordinated management of water and
+associated resources to maximise economic and social well-being sustainably and equitably. While it is noted that IWRM does not
+offer a single solution and should be developed in the local context, lessons learned and best practices can be leveragedEnsuring
+water availability and access and supporting participatory management of water resources have been identified as national priorities
+in the country. The proposed project will address this by enhancing water resource management and installing grey infrastructure
+for improved water access in rural Djiboutian communities (Outcome 2.1).
+5/31/2023 Page 58 of 66 [/INST]  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* Promoting new water sources is an important goal for Djibouti, as identified by the TNC.
+* Participatory management of water resources is also emphasized, including raising public awareness about water consumption.
+* Integrated Water Resource Management (IWRM) approach is highlighted as a way to coordinate management of water and associated resources for maximum economic and social benefit.
+Important Details:
+* Several planned and implemented studies on reservoirs, excavations, buried tanks, and dams are mentioned as part of the effort to promote new water sources.
+* The benefits of IWRM are highlighted, including its ability to support sustainable and equitable management of water resources.
+* It is noted that IWRM does not offer a single solution and should be developed in the local context, but lessons learned and best practices can be leveraged.
+Context:
+* The document mentions the importance of ensuring water availability and access, particularly in rural areas of Djibouti.
+* The proposed project aims to
+<<SYS>>
+ You are an advanced language model tasked with analyzing a database of documents to identify the most common context in which a certain issue is mentioned. You will receive document chunks one by one, and your goal is to provide a concise summary of the key themes and contexts related to the given issue across the documents.
+<</SYS>>
+
+ [INST] Please analyze the following document chunk and identify any relevant information related
+        to the issue of water management. Include key points, important details, and any context that can contribute to the comprehensive summary
+
+Document Chunk: sustainable water resource management interventions to improve access to water and increase the availability of
+groundwater through better recharge mechanisms in Djibouti[108]108. These limitations constrain access to and availability
+of water resources by rural communities, thereby promoting water insecurity in the country.
+Barrier 5. Current water access infrastructure is insufficient for communities’ needs in the face of climate
+change conditions.
+40. Current diesel-powered water pumps are insufficient for community needs as: i) diesel is expensive, susceptible to price
+fluctuations and not readily available; and ii) pumps are not guaranteed to function during or after drought and flooding
+events. The low resilience of the current water infrastructure leads to decreased water accessibility for rural communities
+exposed to drought and flooding events.
+5/31/2023 Page 31 of 66 [/INST]  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* Water security is limited in Djibouti due to various barriers, including insufficiency of water access infrastructure, lack of reliable energy sources, and vulnerability to climate change impacts.
+* Currently, there are only 17 operational wells serving over 1 million people in Djibouti, resulting in uneven distribution of water resources.
+* Groundwater is the primary source of water supply in Djibouti, but its availability is threatened by climate change, population growth, and poor management practices.
+Important Details:
+* The country faces challenges in managing its scarce water resources due to factors such as high evaporation rates, limited rainfall, and increasing demand from growing populations.
+* Climate change poses significant risks to Djibouti's water resources, including sea level rise, changes in precipitation patterns, and increased frequency of extreme weather events like droughts and floods.
+Context:
+* Djibouti is located in the Horn of Africa, where water scarcity is
+<<SYS>>
+ You are an advanced language model tasked with analyzing a database of documents to identify the most common context in which a certain issue is mentioned. You will receive document chunks one by one, and your goal is to provide a concise summary of the key themes and contexts related to the given issue across the documents.
+<</SYS>>
+
+ [INST] Please analyze the following document chunk and identify any relevant information related
+        to the issue of water management. Include key points, important details, and any context that can contribute to the comprehensive summary
+
+Document Chunk: through evapotranspiration from temporary pools or rivers following rainfall events. As a result of the limited surface
+water, the country relies on groundwater, which accounts for ~95% of its water supply, including that used for pastoralism
+and crop irrigation. Aquifer recharge is slow and occurs primarily during flooding events by absorption through the wadi
+riverbeds. Consequently, only 5% of rainfall in the country contributes to groundwater recharge through infiltration[17]19.
+9. The extraction of groundwater in Djibouti is frequently challenging — obstacles include the depth of the aquifers (usually
+beyond 100m) and the elevated temperatures of extracted water, which can reach up to 80°C. As a result of these high
+temperatures, aquifer water is generally pumped directly into stone or cement reservoirs to allow it to cool before use. In
+rural areas, there is limited piped infrastructure, partially as a result of the sparse distribution of households. In such areas,
+groundwater is accessed through deep boreholes or superficial wells and then pumped into reservoirs, from where many
+5/31/2023 Page 15 of 66 [/INST]  Based on the provided document chunk, here is the analysis related to the issue of water management in Djibouti:
+Key Points:
+* Water scarcity is a significant challenge in Djibouti due to limited surface water resources, resulting in reliance on groundwater for nearly all water needs.
+* Groundwater accounts for approximately 95% of Djibouti's total water supply, including for pastoralism and crop irrigation.
+* Only about 5% of rainfall in Djibouti contributes to groundwater recharge through infiltration, mainly occurring during flooding events.
+Important Details:
+* Evapotranspiration from temporary pools or rivers after rainfall events further reduces available surface water resources.
+* Deep boreholes or shallow wells are commonly used in rural areas to access groundwater, followed by direct pumping into storage tanks or reservoirs to reduce temperature-related issues.
+Contextual Information:
+* Djibouti's arid climate and limited surface water resources make water management crucial for sustainable development.
+* The country faces challenges
+<<SYS>>
+ You are an advanced language model tasked with analyzing a database of documents to identify the most common context in which a certain issue is mentioned. You will receive document chunks one by one, and your goal is to provide a concise summary of the key themes and contexts related to the given issue across the documents.
+<</SYS>>
+
+ [INST] Please analyze the following document chunk and identify any relevant information related
+        to the issue of water management. Include key points, important details, and any context that can contribute to the comprehensive summary
+
+Document Chunk: measures and responsibilities necessary for preventing the over-abstraction of groundwater resources. Fuel-powered
+borehole pumps will be replaced with solar-powered pumps. In addition, the infrastructure will accommodate geothermal
+conditions in Djibouti and include the necessary cooling reservoirs in sites where groundwater is extremely hot.
+Groundwater access will be complemented with surface and sub-surface water catchment infrastructure (Output 3.2). As
+with the boreholes in Output 3.2, a community needs assessment will be undertaken to determine site-specific
+interventions. Catchment points for surface water will include infrastructure proven effective within the target areas,
+including microdams or underground storage tanks. Site specific interventions will be determined based on evaluations
+done during the PGG phase. The hydrological and groundwater assessments conducted will be made available via the
+knowledge management platform to national policy-makers and project developers to improve the limited understanding of
+groundwater systems and upscale sustainable integrated water resource management techniques in Djibouti. Output 3.3
+will further manage the impacts of surface water on downstream areas by protecting against flood damage and erosion.
+Methods for preventing floods may include infiltration galleries[2]111 and gabions. Site-specific interventions will be
+determined based on the topography and community-specific impacts identified during the PPG phase. To build on the
+limited water resource management information in the country, the proposed project will support gender-responsive,
+evidence-based development by producing assessments on: i) sustainable groundwater access points; ii) surface and sub-
+surface storage and catchment points; and iii) rangeland and oasis ecosystems restoration. [/INST]  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* The document focuses on measures and responsibilities necessary for preventing the over-abstraction of groundwater resources in Djibouti.
+* Solar-powered pumps will replace fuel-powered borehole pumps to reduce dependence on fossil fuels and minimize environmental impacts.
+* Geothermal conditions will be taken into account in the design of infrastructure to ensure efficient use of energy.
+Important Details:
+* Surface and sub-surface water catchment infrastructure will be developed to complement groundwater access.
+* A community needs assessment will be carried out to determine site-specific interventions.
+* Microdams or underground storage tanks will be used as catchment points for surface water.
+Context:
+* The project aims to improve the limited understanding of groundwater systems in Djibouti through hydrological and groundwater assessments.
+* The knowledge management platform will make these assessments available to national policy-makers and project developers.
+* Methods for preventing floods
+Downloading (…)olve/main/vocab.json: 100%|██████████| 1.04M/1.04M [00:00<00:00, 15.3MB/s]
+Downloading (…)olve/main/merges.txt: 100%|██████████| 456k/456k [00:00<00:00, 34.8MB/s]
+Downloading (…)/main/tokenizer.json: 100%|██████████| 1.36M/1.36M [00:00<00:00, 38.4MB/s]
+Downloading (…)lve/main/config.json: 100%|██████████| 665/665 [00:00<00:00, 332kB/s]
+<<SYS>>
+ You are an advanced language model tasked with analyzing a database of documents to identify the most common context in which a certain issue is mentioned. You will receive document chunks one by one, and your goal is to provide a concise summary of the key themes and contexts related to the given issue across the documents.
+<</SYS>>
+
+ [INST] Now, based on your analysis of all the document chunks mentioning the issue of water management, create a comprehensive summary of the information available in the database about this issue. Your summary should encompass all the key themes, major points, and common contexts that have been mentioned across the document chunks.
+
+  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* Promoting new water sources is an important goal for Djibouti, as identified by the TNC.
+* Participatory management of water resources is also emphasized, including raising public awareness about water consumption.
+* Integrated Water Resource Management (IWRM) approach is highlighted as a way to coordinate management of water and associated resources for maximum economic and social benefit.
+Important Details:
+* Several planned and implemented studies on reservoirs, excavations, buried tanks, and dams are mentioned as part of the effort to promote new water sources.
+* The benefits of IWRM are highlighted, including its ability to support sustainable and equitable management of water resources.
+* It is noted that IWRM does not offer a single solution and should be developed in the local context, but lessons learned and best practices can be leveraged.
+Context:
+* The document mentions the importance of ensuring water availability and access, particularly in rural areas of Djibouti.
+* The proposed project aims to
+
+  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* Water security is limited in Djibouti due to various barriers, including insufficiency of water access infrastructure, lack of reliable energy sources, and vulnerability to climate change impacts.
+* Currently, there are only 17 operational wells serving over 1 million people in Djibouti, resulting in uneven distribution of water resources.
+* Groundwater is the primary source of water supply in Djibouti, but its availability is threatened by climate change, population growth, and poor management practices.
+Important Details:
+* The country faces challenges in managing its scarce water resources due to factors such as high evaporation rates, limited rainfall, and increasing demand from growing populations.
+* Climate change poses significant risks to Djibouti's water resources, including sea level rise, changes in precipitation patterns, and increased frequency of extreme weather events like droughts and floods.
+Context:
+* Djibouti is located in the Horn of Africa, where water scarcity is
+
+  Based on the provided document chunk, here is the analysis related to the issue of water management in Djibouti:
+Key Points:
+* Water scarcity is a significant challenge in Djibouti due to limited surface water resources, resulting in reliance on groundwater for nearly all water needs.
+* Groundwater accounts for approximately 95% of Djibouti's total water supply, including for pastoralism and crop irrigation.
+* Only about 5% of rainfall in Djibouti contributes to groundwater recharge through infiltration, mainly occurring during flooding events.
+Important Details:
+* Evapotranspiration from temporary pools or rivers after rainfall events further reduces available surface water resources.
+* Deep boreholes or shallow wells are commonly used in rural areas to access groundwater, followed by direct pumping into storage tanks or reservoirs to reduce temperature-related issues.
+Contextual Information:
+* Djibouti's arid climate and limited surface water resources make water management crucial for sustainable development.
+* The country faces challenges
+
+  Based on the provided document chunk, here is the analysis related to the issue of water management:
+Key Points:
+* The document focuses on measures and responsibilities necessary for preventing the over-abstraction of groundwater resources in Djibouti.
+* Solar-powered pumps will replace fuel-powered borehole pumps to reduce dependence on fossil fuels and minimize environmental impacts.
+* Geothermal conditions will be taken into account in the design of infrastructure to ensure efficient use of energy.
+Important Details:
+* Surface and sub-surface water catchment infrastructure will be developed to complement groundwater access.
+* A community needs assessment will be carried out to determine site-specific interventions.
+* Microdams or underground storage tanks will be used as catchment points for surface water.
+Context:
+* The project aims to improve the limited understanding of groundwater systems in Djibouti through hydrological and groundwater assessments.
+* The knowledge management platform will make these assessments available to national policy-makers and project developers.
+* Methods for preventing floods [/INST]  Based on the provided document chunks, the following is a comprehensive summary of the information available in the database about the issue of water management in Djibouti:
+Key Themes:
+1. Limited water availability and access in Djibouti, particularly in rural areas.
+2. Importance of promoting new water sources, such as solar-powered pumps and geothermal energy, to reduce dependence on fossil fuels and minimize environmental impacts.
+3. Need for integrated water resource management (IWRM) approach to coordinate management of water and associated resources for maximum economic and social benefit.
+4. Challenges in managing water resources due to factors such as high evaporation rates, limited rainfall, and increasing demand from growing populations.
+5. Vulnerability of Djibouti's water resources to climate change impacts, including sea level rise, changes in precipitation patterns, and increased frequency of extreme weather events.
+6. Importance of participatory management of water resources, including raising public awareness about water consumption and involving communities in decision-making processes.
+7. Need for sustainable and equitable management
+{'issue': 'water management', 'input_documents': [Document(page_content='iii) promoting new water sources; iv) promoting participatory management of water resources; and iv) raising public awareness\nabout water consumption. The TNC identifies surface water mobilisation as an important goal for Djibouti, which is already a focus\nof several planned and implemented studies on reservoirs, excavations, buried tanks and dams. In addition, the TNC highlights the\nbenefits of the integrated water resource management (IWRM) approach, which enhances coordinated management of water and\nassociated resources to maximise economic and social well-being sustainably and equitably. While it is noted that IWRM does not\noffer a single solution and should be developed in the local context, lessons learned and best practices can be leveragedEnsuring\nwater availability and access and supporting participatory management of water resources have been identified as national priorities\nin the country. The proposed project will address this by enhancing water resource management and installing grey infrastructure\nfor improved water access in rural Djiboutian communities (Outcome 2.1).\n5/31/2023 Page 58 of 66', metadata={}), Document(page_content='sustainable water resource management interventions to improve access to water and increase the availability of\ngroundwater through better recharge mechanisms in Djibouti[108]108. These limitations constrain access to and availability\nof water resources by rural communities, thereby promoting water insecurity in the country.\nBarrier 5. Current water access infrastructure is insufficient for communities’ needs in the face of climate\nchange conditions.\n40. Current diesel-powered water pumps are insufficient for community needs as: i) diesel is expensive, susceptible to price\nfluctuations and not readily available; and ii) pumps are not guaranteed to function during or after drought and flooding\nevents. The low resilience of the current water infrastructure leads to decreased water accessibility for rural communities\nexposed to drought and flooding events.\n5/31/2023 Page 31 of 66', metadata={}), Document(page_content='through evapotranspiration from temporary pools or rivers following rainfall events. As a result of the limited surface\nwater, the country relies on groundwater, which accounts for ~95% of its water supply, including that used for pastoralism\nand crop irrigation. Aquifer recharge is slow and occurs primarily during flooding events by absorption through the wadi\nriverbeds. Consequently, only 5% of rainfall in the country contributes to groundwater recharge through infiltration[17]19.\n9. The extraction of groundwater in Djibouti is frequently challenging — obstacles include the depth of the aquifers (usually\nbeyond 100m) and the elevated temperatures of extracted water, which can reach up to 80°C. As a result of these high\ntemperatures, aquifer water is generally pumped directly into stone or cement reservoirs to allow it to cool before use. In\nrural areas, there is limited piped infrastructure, partially as a result of the sparse distribution of households. In such areas,\ngroundwater is accessed through deep boreholes or superficial wells and then pumped into reservoirs, from where many\n5/31/2023 Page 15 of 66', metadata={}), Document(page_content='measures and responsibilities necessary for preventing the over-abstraction of groundwater resources. Fuel-powered\nborehole pumps will be replaced with solar-powered pumps. In addition, the infrastructure will accommodate geothermal\nconditions in Djibouti and include the necessary cooling reservoirs in sites where groundwater is extremely hot.\nGroundwater access will be complemented with surface and sub-surface water catchment infrastructure (Output 3.2). As\nwith the boreholes in Output 3.2, a community needs assessment will be undertaken to determine site-specific\ninterventions. Catchment points for surface water will include infrastructure proven effective within the target areas,\nincluding microdams or underground storage tanks. Site specific interventions will be determined based on evaluations\ndone during the PGG phase. The hydrological and groundwater assessments conducted will be made available via the\nknowledge management platform to national policy-makers and project developers to improve the limited understanding of\ngroundwater systems and upscale sustainable integrated water resource management techniques in Djibouti. Output 3.3\nwill further manage the impacts of surface water on downstream areas by protecting against flood damage and erosion.\nMethods for preventing floods may include infiltration galleries[2]111 and gabions. Site-specific interventions will be\ndetermined based on the topography and community-specific impacts identified during the PPG phase. To build on the\nlimited water resource management information in the country, the proposed project will support gender-responsive,\nevidence-based development by producing assessments on: i) sustainable groundwater access points; ii) surface and sub-\nsurface storage and catchment points; and iii) rangeland and oasis ecosystems restoration.', metadata={})], 'output_text': "  Based on the provided document chunks, the following is a comprehensive summary of the information available in the database about the issue of water management in Djibouti:\nKey Themes:\n1. Limited water availability and access in Djibouti, particularly in rural areas.\n2. Importance of promoting new water sources, such as solar-powered pumps and geothermal energy, to reduce dependence on fossil fuels and minimize environmental impacts.\n3. Need for integrated water resource management (IWRM) approach to coordinate management of water and associated resources for maximum economic and social benefit.\n4. Challenges in managing water resources due to factors such as high evaporation rates, limited rainfall, and increasing demand from growing populations.\n5. Vulnerability of Djibouti's water resources to climate change impacts, including sea level rise, changes in precipitation patterns, and increased frequency of extreme weather events.\n6. Importance of participatory management of water resources, including raising public awareness about water consumption and involving communities in decision-making processes.\n7. Need for sustainable and equitable management"}
+
+Process finished with exit code 0
