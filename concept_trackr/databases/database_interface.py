@@ -16,15 +16,12 @@ class QdrantDatabase:
         self._host = hostname
         self._port = port
         self.collection = collection
-
-        self.client = QdrantClient(self._host, port=self._port)
-
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-
-        self.model = SentenceTransformer(embedding_model, device='cuda')
         self.vector_size = embedding_size
 
+        self.client = QdrantClient(self._host, port=self._port)
+        self.model = SentenceTransformer(embedding_model, device='cuda')
         self.splitter = self._get_splitter()
 
         self.nextID = 0
