@@ -8,6 +8,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from sentence_transformers import SentenceTransformer
+from gef_analyzr.utils.gef_metadata import gef_metadata_from_filepath
 
 
 class QdrantDatabase:
@@ -79,9 +80,13 @@ class QdrantDatabase:
             points = [
                 models.PointStruct(
                     id=self._getID(),
-                    payload={**document.metadata, **{'page_content': document.page_content}},
-                    vector=embedding_vectors[i].tolist(),
-                ) for i, document in enumerate(documents)
+                    payload={
+                        **document.metadata,
+                        **{'page_content': document.page_content},
+                        **gef_metadata_from_filepath(document.metadata['source'])
+                    },
+                    vector=chunk_vectors[i].tolist(),
+                ) for i, document in enumerate(chunk_documents)
             ]
 
             self.client.upsert(
