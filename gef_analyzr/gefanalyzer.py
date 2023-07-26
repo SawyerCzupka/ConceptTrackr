@@ -4,12 +4,17 @@ easy-to-use class that takes care of all setup.
 """
 
 
-class ConceptTrackr:
+class GEFAnalyzer:
+    def __init__(self, qdrant, llm, embedding_model):
+        self.database = qdrant
+        self.llm = llm
+        self.embedding_model = embedding_model
 
     def countOccurrences(self):
         pass
 
     def answerQuestion(self, question, projectID):
+        # Must search only within the projectID
         pass
 
     def extractContext(self, issue):

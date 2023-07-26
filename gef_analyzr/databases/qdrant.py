@@ -8,7 +8,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from sentence_transformers import SentenceTransformer
-from gef_analyzr.utils.gef_metadata import gef_metadata_from_filepath
+from gef_analyzr.utils import gef_metadata_from_filepath
 
 
 class QdrantDatabase:

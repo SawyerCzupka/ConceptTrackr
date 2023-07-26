@@ -1,11 +1,12 @@
 from langchain import PromptTemplate
 from langchain.chains.question_answering import load_qa_chain
+from langchain.chains import RetrievalQA
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain.vectorstores import Qdrant
 from qdrant_client import QdrantClient
 
-from concept_trackr.databases.database_interface import QdrantDatabase
-from concept_trackr.prompts.default_prompts import BEGIN_SYS, END_SYS, BEGIN_INST, END_INST, CONTEXT_SYSTEM, \
+from gef_analyzr.databases.qdrant import QdrantDatabase
+from gef_analyzr.prompts.default_prompts import BEGIN_SYS, END_SYS, BEGIN_INST, END_INST, CONTEXT_SYSTEM, \
     CONTEXT_INSTRUCTION, COMBINE_INSTRUCTION
 
 
