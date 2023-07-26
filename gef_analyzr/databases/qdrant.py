@@ -60,16 +60,34 @@ class QdrantDatabase:
         return ID
 
     def add_elements(self, documents: List[Document], embedding_vectors):
-        self.client.upsert(
-            collection_name=self.collection,
-            points=[
+        def chunk_list(lst, chunk_size):
+            """Divides a list into smaller chunks."""
+            for i in range(0, len(lst), chunk_size):
+                yield lst[i:i + chunk_size]
+
+        chunk_size = 20
+        total_docs = len(documents)
+        total_chunks = (total_docs + chunk_size - 1) // chunk_size
+
+        for chunk_idx, document_chunk in enumerate(chunk_list(documents, chunk_size)):
+            start_idx = chunk_idx * chunk_size
+            end_idx = min((chunk_idx + 1) * chunk_size, total_docs)
+
+            chunk_vectors = embedding_vectors[start_idx:end_idx]
+            chunk_documents = document_chunk
+
+            points = [
                 models.PointStruct(
                     id=self._getID(),
                     payload={**document.metadata, **{'page_content': document.page_content}},
                     vector=embedding_vectors[i].tolist(),
                 ) for i, document in enumerate(documents)
             ]
-        )
+
+            self.client.upsert(
+                collection_name=self.collection,
+                points=points
+            )
 
     def search(self, text_query, **kwargs):
         results = self.client.search(
