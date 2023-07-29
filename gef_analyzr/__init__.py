@@ -1,1 +1,1 @@
-from .gefanalyzer import ConceptTrackr
+from .gefanalyzer import GEFAnalyzer

@@ -1,13 +1,12 @@
 from langchain import PromptTemplate
 from langchain.chains.question_answering import load_qa_chain
-from langchain.chains import RetrievalQA
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain.vectorstores import Qdrant
 from qdrant_client import QdrantClient
 
 from gef_analyzr.databases.qdrant import QdrantDatabase
 from gef_analyzr.prompts.default_prompts import BEGIN_SYS, END_SYS, BEGIN_INST, END_INST, CONTEXT_SYSTEM, \
-    CONTEXT_INSTRUCTION, COMBINE_INSTRUCTION
+    CONTEXT_INSTRUCTION, CONTEXT_COMBINE_INSTRUCTION
 
 
 class ContextSearcher:
@@ -27,7 +26,7 @@ class ContextSearcher:
         templateStr = f"{BEGIN_INST} {BEGIN_SYS} {CONTEXT_SYSTEM} {END_SYS} {CONTEXT_INSTRUCTION} {END_INST}"
         self.question_prompt = PromptTemplate(template=templateStr, input_variables=['context', 'issue'])
 
-        combine_template = f"{BEGIN_INST} {BEGIN_SYS} {CONTEXT_SYSTEM} {END_SYS} {COMBINE_INSTRUCTION} {END_INST}"
+        combine_template = f"{BEGIN_INST} {BEGIN_SYS} {CONTEXT_SYSTEM} {END_SYS} {CONTEXT_COMBINE_INSTRUCTION} {END_INST}"
         self.combine_prompt = PromptTemplate(template=combine_template, input_variables=['issue', 'summaries'])
 
         self.chain = self._create_map_reduce_chain()
