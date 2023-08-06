@@ -29,14 +29,15 @@ relevant information in the document chunks to support your answers. You may enc
 project goals, strategies, local community involvement, economic benefits, and more. Approach each question with \
 attention to detail and accuracy."""
 
+QA_SYSTEM_2 = """Given the following extracted parts of a long document and a question, use the context to answer the question.
+If you don't know the answer, just say that you don't know. Don't try to make up an answer."""
+
 QA_REFINE_INIT = """
 Context: {context_str}
 
 Given the context information and without using prior knowledge, answer the question below.
 
 Question: {question}
-
-Only respond with your answer to the question and nothing more.
 """
 
 QA_REFINE = """The original question is as follows: {question}
@@ -49,4 +50,5 @@ We have the opportunity to refine the existing answer (only if needed) with some
 Context: {context_str}
    
 Given the new context, refine the original answer to better answer the question.
-If the context isn't useful, return the original answer. Only respond with your updated answer to the question."""
+If the context isn't useful, return the original answer.:
+"""

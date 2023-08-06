@@ -26,7 +26,7 @@ class ProjectQA:
         self._qa: BaseCombineDocumentsChain = chain_mapping[chain_type]()
 
     def ask_question(self, question, projectID):
-        docs = self._get_documents_from_project(question, projectID)
+        docs = self._get_documents_from_project(question, projectID, k=5)
 
         return self._qa({'input_documents': docs, 'question': question}, return_only_outputs=True)
 
@@ -37,12 +37,6 @@ class ProjectQA:
         )
 
         return self._database.search(query=query, search_type=search_type, filter=search_filter, **kwargs)
-
-    def _create_refine_chain_default(self):
-        return load_qa_chain(
-            self._llm,
-            chain_type='refine'
-        )
 
     def _create_refine_chain(self):
         question_tmpl = f"{BEGIN_INST} {BEGIN_SYS} {QA_SYSTEM} {END_SYS} {QA_REFINE_INIT} {END_INST}"
