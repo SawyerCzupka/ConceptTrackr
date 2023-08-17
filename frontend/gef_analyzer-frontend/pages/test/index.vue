@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <router-view/>
-  </div>
+  <div>HEY!</div>
 </template>
+
 <script setup lang="ts"></script>
+
+<style scoped></style>
