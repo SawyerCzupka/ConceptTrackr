@@ -18,7 +18,7 @@ class GEFAnalyzer:
     def countOccurrences(self):
         pass
 
-    def answerQuestionInProject(self, question, projectID):
+    def answerQuestionInProject(self, question, projectID) -> str:
         # Must search only within the projectID
         if self._qa is None:
             self._qa = ProjectQA(self.database, self.llm, "refine")
@@ -32,8 +32,8 @@ class GEFAnalyzer:
         Generates a pandas dataframe with responses to multiple questions
 
         :param questions: List of questions to be included in the dataframe
-        :param projectID:
-        :return:
+        :param projectID: Project to search through
+        :return: dataframe with all questions and answers
         """
 
         df = pd.DataFrame(columns=["Question", "Response", "ProjectID"])
