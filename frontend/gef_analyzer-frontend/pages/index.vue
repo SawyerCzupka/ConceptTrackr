@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="min-w-screen min-h-screen bg-teal-600">
+  <div class="bg-gray-200">
+    <section class="">
       <div class="flex align-middle justify-center">
         <ProjectOneQuery />
       </div>
@@ -9,5 +9,5 @@
 </template>
 
 <script setup>
-import ProjectOneQuery from "~/components/ProjectOneQuery.vue";
+  import ProjectOneQuery from "~/components/ProjectOneQuery.vue";
 </script>
