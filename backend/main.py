@@ -1,13 +1,10 @@
 import pandas as pd
 from fastapi import FastAPI, Body
-from fastapi.responses import StreamingResponse
 from typing import Annotated, List
-import io
 
 from backend.app.utils.gef_loader import gef_from_env
-
-# import gef_from
-# from app.utils.gef_loader import gef_from_env
+from backend.app.utils.response import df_to_csv_response
+from gef_analyzr.prompts.gef_questions import SPREADSHEET_QUESTIONS
 
 gef = gef_from_env()
 app = FastAPI()
@@ -36,6 +33,12 @@ def lorem():
 
 @app.post("/answerQuestionInProject")
 def answerQuestion(question: Annotated[str, Body()], projectID: Annotated[int, Body()]):
+    """
+    Gives the model-generated answer to a question for a given project
+    :param question: Question to be asked
+    :param projectID: GEF project ID
+    :return: answer string
+    """
     return gef.answerQuestionInProject(question, projectID)
 
 
@@ -43,23 +46,24 @@ def answerQuestion(question: Annotated[str, Body()], projectID: Annotated[int, B
 def answerQuestions(
     questions: Annotated[List[str], Body()], projectID: Annotated[int, Body()]
 ):
+    """
+    Gives the model-generated answers to many questions
+    :param questions: Array of question strings
+    :param projectID: GEF project ID
+    :return: JSON
+    """
     df = gef.answerQuestionsInProject(questions, projectID)
-    # data = {
-    #     "Question": ["What is your name?", "How are you?"],
-    #     "Response": [
-    #         "My name is Alice.",
-    #         "I'm doing well, thank you!",
-    #     ],
-    #     "ProjectID": [123, 123],
-    # }
-    #
-    # df = pd.DataFrame(data)
 
-    csv_content = df.to_csv(index=False)
-    csv_bytes = io.BytesIO(csv_content.encode())
+    return df.to_json()
 
-    return StreamingResponse(
-        csv_bytes,
-        headers={"Content-Disposition": "attachment; filename=exported_data.csv"},
-        media_type="text/csv",
-    )
+
+@app.post("/generateSpreadsheet")
+def generateSpreadsheet(projectID: Annotated[int, Body()]):
+    """
+    Generates a filled spreadsheet for a given project
+    :param projectID: GEF project ID
+    :return: csv file with responses
+    """
+    df = gef.answerQuestionsInProject(SPREADSHEET_QUESTIONS, projectID)
+
+    return df_to_csv_response(df)
