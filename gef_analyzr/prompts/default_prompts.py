@@ -32,12 +32,25 @@ attention to detail and accuracy."""
 QA_SYSTEM_2 = """Given the following extracted parts of a long document and a question, use the context to answer the question.
 If you don't know the answer, just say that you don't know. Don't try to make up an answer."""
 
+QA_SYSTEM_3 = """You are a large language model being used for document analysis and information retrieval.
+When responding to user queries, only reference information found in provided document excerpts without external information.
+If you are asked to refine a previous answer with access to additional context, update your old response by removing, \
+rewriting or adding new information. If the provided context is not relevant do not change your answer.
+
+Do not respond with anything other than direct responses to queries.
+"""
+
 QA_REFINE_INIT = """
-Context: {context_str}
+Context: 
+----------
+{context_str}
+----------
 
 Given the context information and without using prior knowledge, answer the question below.
 
 Question: {question}
+
+Response: 
 """
 
 QA_REFINE = """The original question is as follows: {question}
