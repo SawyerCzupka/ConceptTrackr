@@ -67,3 +67,18 @@ def generateSpreadsheet(projectID: Annotated[int, Body()]):
     df = gef.answerQuestionsInProject(SPREADSHEET_QUESTIONS, projectID)
 
     return df_to_csv_response(df)
+
+
+@app.get("/testFileDownload")
+def testFileDownload():
+    # Create a dictionary of data
+    data = {
+        "Name": ["Alice", "Bob", "Charlie", "David"],
+        "Age": [25, 30, 22, 28],
+        "City": ["New York", "San Francisco", "Los Angeles", "Chicago"],
+    }
+
+    # Create a DataFrame using the dictionary
+    df = pd.DataFrame(data)
+
+    return df_to_csv_response(df)

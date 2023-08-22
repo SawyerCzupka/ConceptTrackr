@@ -1,19 +1,6 @@
-<template>
-  <div class="bg-gray-200">
-    <section class="">
-      <div class="flex align-middle justify-center">
-        <ProjectOneQuery />
-        <v-btn @click="download_csv">Download CSV</v-btn>
-      </div>
-    </section>
-  </div>
-</template>
-
-<script setup>
-import ProjectOneQuery from "~/components/ProjectOneQuery.vue";
 import axios from "axios";
 
-async function download_csv() {
+export async function download_csv() {
   try {
     const response = await axios.get("/api/download");
 
@@ -29,4 +16,3 @@ async function download_csv() {
     console.error("An error occurred:", error);
   }
 }
-</script>
