@@ -39,11 +39,11 @@ class GEFAnalyzer:
         df = pd.DataFrame(columns=["Question", "Response", "ProjectID"])
 
         for question in questions:
-            response = self.answerQuestionInProject(question, projectID)
-            df = df.append(
-                {"Question": question, "Response": response, "ProjectID": projectID},
-                ignore_index=True,
-            )
+            # response = self.answerQuestionInProject(question, projectID)
+            response = question
+            newRow = {"Question": question, "Response": response, "ProjectID": projectID}
+
+            df = df._append(newRow, ignore_index=True)
 
         return df
 
