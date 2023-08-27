@@ -42,8 +42,16 @@ class ProjectQA:
     def _get_documents_from_project(
         self, query: str, projectID: int, search_type="similarity", **kwargs
     ):
-        search_filter = models.FieldCondition(
-            key="projectID", match=models.MatchValue(value=f"{projectID}")
+        # search_filter = models.FieldCondition(
+        #     key="projectID", match=models.MatchValue(value=f"{projectID}")
+        # )
+
+        search_filter = models.Filter(
+            must=[
+                models.FieldCondition(
+                    key="projectID", match=models.MatchValue(value=f"{projectID}")
+                )
+            ]
         )
 
         return self._database.search(
