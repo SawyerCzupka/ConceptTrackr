@@ -30,4 +30,6 @@ def qdrant_from_env():
         "embedding_model": os.getenv("EMBEDDING_MODEL"),
     }
 
+    print(f"Params: {params}")
+
     return get_database_client(**params)

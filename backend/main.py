@@ -1,6 +1,9 @@
 import pandas as pd
 from fastapi import FastAPI, Body
+from fastapi.responses import JSONResponse
 from typing import Annotated, List
+from backend import tasks
+from celery.result import AsyncResult
 
 from backend.app.utils.gef_loader import gef_from_env
 from backend.app.utils.response import df_to_csv_response
@@ -13,6 +16,24 @@ app = FastAPI()
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+
+@app.post("/test")
+def test(test1: Annotated[str, Body(embed=True)]):
+    return test1
+
+
+@app.get("/task")
+async def testTask():
+    task = tasks.add.delay()
+    return JSONResponse({"task_id": task.id})
+
+
+@app.post("/taskStatus/{task_id}")
+async def taskStatus(task_id: str):
+    print(f"Task ID: {task_id}")
+    res = tasks.celery.AsyncResult(task_id)
+    return res.status
 
 
 @app.get("/lorem")
@@ -58,12 +79,13 @@ def answerQuestions(
 
 
 @app.post("/generateSpreadsheet")
-def generateSpreadsheet(projectID: Annotated[int, Body()]):
+def generateSpreadsheet(projectID: Annotated[int, Body(embed=True)]):
     """
     Generates a filled spreadsheet for a given project
     :param projectID: GEF project ID
     :return: csv file with responses
     """
+
     df = gef.answerQuestionsInProject(SPREADSHEET_QUESTIONS, projectID)
 
     return df_to_csv_response(df)
