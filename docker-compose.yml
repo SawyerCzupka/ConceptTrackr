@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    command: npm run dev
+
+  fastapi:
+    build: .
+    command: pip list
+
+  worker:
+    build: .
+    command: celery --app=tasks.celery worker --loglevel=INFO
+
+  flower:
+    build: .
+    command: celery --app=tasks.celery flower
+
+  redis:
+    image: redis:7

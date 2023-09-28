@@ -29,26 +29,41 @@ async def testTask():
     return JSONResponse({"task_id": task.id})
 
 
+@app.get("/incTest")
+async def incTest():
+    task = tasks.gefTest.delay()
+    return JSONResponse({"task_id": task.id})
+
+
 @app.post("/taskStatus/{task_id}")
 async def taskStatus(task_id: str):
     print(f"Task ID: {task_id}")
     res = tasks.celery.AsyncResult(task_id)
+
+    if res.ready():
+        return res.get()
+
     return res.status
+
+
+@app.get("/tasks")
+async def getTasks():
+    return tasks.celery.tasks
 
 
 @app.get("/lorem")
 def lorem():
     return {
         "output": "Nunc condimentum eros eget arcu rhoncus consequat. Phasellus molestie augue quam, sed cursus ante "
-        "lacinia non. Aenean ultrices ex non lectus accumsan gravida. Fusce a libero vel velit ultricies "
-        "iaculis. Maecenas lacinia sem sed accumsan interdum. In lacus tortor, facilisis suscipit vulputate "
-        "at, dignissim eu lorem. Nunc nec semper eros. Proin sed mi nec sem volutpat vulputate et vitae eros. "
-        "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. "
-        "Praesent risus diam, gravida vel lectus ut, tincidunt feugiat purus. Mauris auctor turpis id "
-        "mauris fringilla, eu porttitor velit viverra. Aenean sed enim sit amet ligula euismod posuere "
-        "vitae in turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas luctus, "
-        "purus vel imperdiet dictum, lectus elit placerat arcu, vitae pretium ipsum felis sit amet justo. "
-        "Cras porta efficitur nulla."
+                  "lacinia non. Aenean ultrices ex non lectus accumsan gravida. Fusce a libero vel velit ultricies "
+                  "iaculis. Maecenas lacinia sem sed accumsan interdum. In lacus tortor, facilisis suscipit vulputate "
+                  "at, dignissim eu lorem. Nunc nec semper eros. Proin sed mi nec sem volutpat vulputate et vitae eros."
+                  " Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. "
+                  "Praesent risus diam, gravida vel lectus ut, tincidunt feugiat purus. Mauris auctor turpis id "
+                  "mauris fringilla, eu porttitor velit viverra. Aenean sed enim sit amet ligula euismod posuere "
+                  "vitae in turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas luctus, "
+                  "purus vel imperdiet dictum, lectus elit placerat arcu, vitae pretium ipsum felis sit amet justo. "
+                  "Cras porta efficitur nulla."
     }
 
 
@@ -65,7 +80,7 @@ def answerQuestion(question: Annotated[str, Body()], projectID: Annotated[int, B
 
 @app.post("/answerQuestionsInProject")
 def answerQuestions(
-    questions: Annotated[List[str], Body()], projectID: Annotated[int, Body()]
+        questions: Annotated[List[str], Body()], projectID: Annotated[int, Body()]
 ):
     """
     Gives the model-generated answers to many questions
