@@ -43,3 +43,6 @@ class GEFAnalyzer:
             df = df._append(newRow, ignore_index=True)
 
         return df
+
+    def countOccurrences(self):
+        return True

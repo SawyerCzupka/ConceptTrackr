@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from gef_analyzr import GEFAnalyzer
 
 celery = Celery(
-    "tasks", broker="redis://localhost:6379", backend="redis://localhost:6379"
+    "tasks", broker="redis://redis:6379", backend="redis://redis:6379"
 )
 
 
