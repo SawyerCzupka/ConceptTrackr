@@ -2,20 +2,27 @@ version: '3.8'
 
 services:
   frontend:
+    depends_on:
+      - fastapi
+      - worker
+      - qdrant
+      - redis
     build:
-      context: ./frontend/gef_analyzer-frontend/
+      context: ./frontend/
       dockerfile: frontend.Dockerfile
     ports:
       - "3000:3000"
     command: npm run dev
+    restart: always
 
   fastapi:
     build:
       context: .
-      dockerfile: backend.Dockerfile
+      dockerfile: ./backend/backend.Dockerfile
     ports:
       - "8888:8111"
     command: python run_backend.py
+    restart: always
 
   worker:
     depends_on:
@@ -23,9 +30,9 @@ services:
       - redis
     build:
       context: .
-      dockerfile: backend.Dockerfile
-
+      dockerfile: ./backend/backend.Dockerfile
     command: celery --app=backend.tasks.celery worker --loglevel=INFO
+    restart: always
 
   flower:
     depends_on:
@@ -33,15 +40,23 @@ services:
       - redis
     build:
       context: .
-      dockerfile: backend.Dockerfile
+      dockerfile: ./backend/backend.Dockerfile
     ports:
       - "5555:5555"
-    command: celery --app=backend.tasks.celery flower
+    command: celery --app=backend.tasks.celery flower --persistent=True
+    restart: always
 
   redis:
     image: redis:7
     ports:
       - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+    restart: always
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
 
 #  rabbitmq:
 #    image: rabbitmq
