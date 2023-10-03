@@ -1,6 +1,5 @@
 from celery import Celery
 from celery.app import task
-from dotenv import load_dotenv
 from gef_analyzr import GEFAnalyzer
 
 celery = Celery(
@@ -31,7 +30,7 @@ class GEFTask(celery.Task):
         return self._increment
 
     def initGEF(self):
-        from backend.app.utils.gef_loader import gef_from_env
+        from apps.backend.app.utils.gef_loader import gef_from_env
         self._gef = gef_from_env()
 
 

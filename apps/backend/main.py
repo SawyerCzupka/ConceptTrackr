@@ -2,11 +2,10 @@ import pandas as pd
 from fastapi import FastAPI, Body
 from fastapi.responses import JSONResponse
 from typing import Annotated, List
-from backend import tasks
-from celery.result import AsyncResult
+from apps.backend import tasks
 
-from backend.app.utils.gef_loader import gef_from_env
-from backend.app.utils.response import df_to_csv_response
+from apps.backend.app.utils.gef_loader import gef_from_env
+from apps.backend.app.utils.response import df_to_csv_response
 from gef_analyzr.prompts.gef_questions import SPREADSHEET_QUESTIONS
 
 gef = gef_from_env()
