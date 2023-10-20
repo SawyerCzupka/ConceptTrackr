@@ -2,14 +2,11 @@ import pandas as pd
 from fastapi import FastAPI, Body
 from fastapi.responses import JSONResponse
 from typing import Annotated, List
-from backend import tasks
-from celery.result import AsyncResult
+import celery_tasks
 
-from backend.app.utils.gef_loader import gef_from_env
-from backend.app.utils.response import df_to_csv_response
-from gef_analyzr.prompts.gef_questions import SPREADSHEET_QUESTIONS
+from utils.response import df_to_csv_response
 
-gef = gef_from_env()
+
 app = FastAPI()
 
 
@@ -25,20 +22,20 @@ def test(test1: Annotated[str, Body(embed=True)]):
 
 @app.get("/task")
 async def testTask():
-    task = tasks.add.delay()
+    task = celery_tasks.add.delay()
     return JSONResponse({"task_id": task.id})
 
 
 @app.get("/incTest")
 async def incTest():
-    task = tasks.gefTest.delay()
+    task = celery_tasks.gefTest.delay()
     return JSONResponse({"task_id": task.id})
 
 
 @app.post("/taskStatus/{task_id}")
 async def taskStatus(task_id: str):
     print(f"Task ID: {task_id}")
-    res = tasks.celery.AsyncResult(task_id)
+    res = celery_tasks.celery.AsyncResult(task_id)
 
     if res.ready():
         return res.get()
@@ -48,7 +45,7 @@ async def taskStatus(task_id: str):
 
 @app.get("/tasks")
 async def getTasks():
-    return tasks.celery.tasks
+    return celery_tasks.celery.tasks
 
 
 @app.get("/lorem")
@@ -75,7 +72,8 @@ def answerQuestion(question: Annotated[str, Body()], projectID: Annotated[int, B
     :param projectID: GEF project ID
     :return: answer string
     """
-    return gef.answerQuestionInProject(question, projectID)
+    # return gef.answerQuestionInProject(question, projectID)
+    pass
 
 
 @app.post("/answerQuestionsInProject")
@@ -88,9 +86,10 @@ def answerQuestions(
     :param projectID: GEF project ID
     :return: JSON
     """
-    df = gef.answerQuestionsInProject(questions, projectID)
+    # df = gef.answerQuestionsInProject(questions, projectID)
 
-    return df.to_json()
+    # return df.to_json()
+    pass
 
 
 @app.post("/generateSpreadsheet")
@@ -101,9 +100,10 @@ def generateSpreadsheet(projectID: Annotated[int, Body(embed=True)]):
     :return: csv file with responses
     """
 
-    df = gef.answerQuestionsInProject(SPREADSHEET_QUESTIONS, projectID)
+    # df = gef.answerQuestionsInProject(SPREADSHEET_QUESTIONS, projectID)
 
-    return df_to_csv_response(df)
+    # return df_to_csv_response(df)
+    pass
 
 
 @app.get("/testFileDownload")
@@ -119,3 +119,8 @@ def testFileDownload():
     df = pd.DataFrame(data)
 
     return df_to_csv_response(df)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8111)

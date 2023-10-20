@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cu117
+fastapi
+celery
+flower
+torch==2.0.1+cu117
+uvicorn
+qdrant_client
+sentence_transformers
+python-dotenv
+langchain
+pandas
+./libraries/GEF-Analyzr

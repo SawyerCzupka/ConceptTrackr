@@ -18,10 +18,11 @@ services:
   fastapi:
     build:
       context: .
-      dockerfile: ./backend/backend.Dockerfile
+      dockerfile: backend/worker.Dockerfile
     ports:
       - "8888:8111"
-    command: python run_backend.py
+    command: python main.py
+#    command: pip list
     restart: always
 
   worker:
@@ -30,8 +31,9 @@ services:
       - redis
     build:
       context: .
-      dockerfile: ./backend/backend.Dockerfile
-    command: celery --app=backend.tasks.celery worker --loglevel=INFO
+      dockerfile: backend/worker.Dockerfile
+    command: celery --app=celery_tasks worker --loglevel=INFO
+#    command: python celery_tasks.py
     restart: always
 
   flower:
@@ -40,10 +42,10 @@ services:
       - redis
     build:
       context: .
-      dockerfile: ./backend/backend.Dockerfile
+      dockerfile: backend/worker.Dockerfile
     ports:
       - "5555:5555"
-    command: celery --app=backend.tasks.celery flower --persistent=True
+    command: celery --app=celery_tasks flower --persistent=True
     restart: always
 
   redis:
@@ -57,6 +59,7 @@ services:
     image: qdrant/qdrant
     ports:
       - "6333:6333"
+    restart: always
 
 #  rabbitmq:
 #    image: rabbitmq

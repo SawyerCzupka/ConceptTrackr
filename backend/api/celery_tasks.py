@@ -1,15 +1,15 @@
 from celery import Celery
 from celery.app import task
 from dotenv import load_dotenv
+
+from utils import gef_from_env
 from gef_analyzr import GEFAnalyzer
+import os
 
 celery = Celery(
-    "tasks", broker="redis://redis:6379/0", backend="redis://redis:6379/0"
+    "celery_tasks", broker="redis://redis:6379/0", backend="redis://redis:6379/0"
 )
 
-
-# celery.conf.broker_url = "redis://localhost:6379"
-# celery.conf.result_backend = "redis://localhost:6379"
 
 class GEFTask(celery.Task):
     _gef: None | GEFAnalyzer = None
@@ -18,7 +18,7 @@ class GEFTask(celery.Task):
     @property
     def gef(self) -> GEFAnalyzer:
         if self._gef is None:
-            self.initGEF()
+            self._initGEF()
         return self._gef
 
     @property
@@ -30,8 +30,8 @@ class GEFTask(celery.Task):
         self._increment += 1
         return self._increment
 
-    def initGEF(self):
-        from backend.app.utils.gef_loader import gef_from_env
+    def _initGEF(self):
+        print(f"-- DIRECTORY: {os.listdir(os.getcwd())}")
         self._gef = gef_from_env()
 
 
@@ -44,3 +44,10 @@ def add(x=1, y=5):
 def gefTest(self: task):
     self.gef.countOccurrences()
     return self.increment
+
+
+if __name__ == "__main__":
+    worker = celery.Worker(
+        include=['']
+    )
+    celery.start(['worker', '-A', 'celery_tasks'])
