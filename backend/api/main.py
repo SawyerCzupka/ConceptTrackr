@@ -3,6 +3,7 @@ from fastapi import FastAPI, Body
 from fastapi.responses import JSONResponse
 from typing import Annotated, List
 import celery_tasks
+from celery.result import AsyncResult
 
 from utils.response import df_to_csv_response
 
@@ -35,7 +36,7 @@ async def incTest():
 @app.post("/taskStatus/{task_id}")
 async def taskStatus(task_id: str):
     print(f"Task ID: {task_id}")
-    res = celery_tasks.celery.AsyncResult(task_id)
+    res = celery_tasks.celery_app.AsyncResult(task_id)
 
     if res.ready():
         return res.get()
@@ -45,7 +46,15 @@ async def taskStatus(task_id: str):
 
 @app.get("/tasks")
 async def getTasks():
-    return celery_tasks.celery.tasks
+    # i = celery_tasks.celery_app.control.inspect()
+    # return
+
+    backend = celery_tasks.celery_app.backend.client.scan_iter
+    task_results = []
+    for key in backend.client.scan_iter("celery-task-meta-*"):
+        task_id = str(key).split("celery-task-meta-", 1)[1].replace("'", "")
+        task_results.append(celery_tasks.celery_app.AsyncResult(task_id))
+    return task_results
 
 
 @app.get("/lorem")

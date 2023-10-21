@@ -22,7 +22,6 @@ services:
     ports:
       - "8888:8111"
     command: python main.py
-#    command: pip list
     restart: always
 
   worker:
@@ -32,7 +31,7 @@ services:
     build:
       context: .
       dockerfile: backend/worker.Dockerfile
-    command: celery --app=celery_tasks worker --loglevel=INFO
+    command: celery --app=celery_tasks.celery_app worker --loglevel=INFO
 #    command: python celery_tasks.py
     restart: always
 
@@ -40,12 +39,13 @@ services:
     depends_on:
       - fastapi
       - redis
+      - worker
     build:
       context: .
       dockerfile: backend/worker.Dockerfile
     ports:
       - "5555:5555"
-    command: celery --app=celery_tasks flower --persistent=True
+    command: ['celery', '--app=celery_tasks.celery_app', 'flower', '--persistent=True']
     restart: always
 
   redis:

@@ -1,7 +1,7 @@
 --extra-index-url https://download.pytorch.org/whl/cu117
 fastapi
 celery
-flower
+flower @ https://github.com/shipwell/flower/zipball/235ad4a1bc7b96ec30de8185c813714d61cdc55c
 torch==2.0.1+cu117
 uvicorn
 qdrant_client
@@ -9,4 +9,5 @@ sentence_transformers
 python-dotenv
 langchain
 pandas
+redis
 ./libraries/GEF-Analyzr
