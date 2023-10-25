@@ -10,4 +10,7 @@ python-dotenv
 langchain
 pandas
 redis
+pdfplumber
+dask
+distributed
 ./libraries/GEF-Analyzr
