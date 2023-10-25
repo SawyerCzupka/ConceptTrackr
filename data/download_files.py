@@ -1,25 +1,28 @@
 import os
+import csv
 import requests
-import openpyxl
 from bs4 import BeautifulSoup
 
-PROJECTS_SPREADSHEET_PATH = "projects.xlsx"
+PROJECTS_CSV_PATH = "projects.csv"
 BASE_URL = "https://www.thegef.org/projects-operations/projects/"
 OUTPUT_PATH = "NEW"
 INTERESTED_YEARS = [i for i in range(2012, 2024)]
 
 
-def get_project_ids_from_spreadsheet(path):
-    workbook = openpyxl.load_workbook(path)
-    sheet = workbook.active
-
+def get_project_ids_from_csv(path):
     project_ids = []
 
-    for row in range(1, sheet.max_row + 1):
-        year_cell = sheet.cell(row=row, column=10)
-        if year_cell.value in INTERESTED_YEARS:
-            id_cell = sheet.cell(row=row, column=2)
-            project_ids.append(id_cell.value)
+    with open(path, "r") as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)  # Skip the header row
+
+        for row in reader:
+            year = int(
+                row[9]
+            )  # Assuming the year is in the 10th column, indexed from 0
+            if year in INTERESTED_YEARS:
+                project_id = row[1]  # Assuming the ID is in the 2nd column
+                project_ids.append(project_id)
 
     return project_ids
 
@@ -54,7 +57,7 @@ def download_pdfs_from_project_page(project_id):
 
 
 def main():
-    project_ids = get_project_ids_from_spreadsheet(PROJECTS_SPREADSHEET_PATH)
+    project_ids = get_project_ids_from_csv(PROJECTS_CSV_PATH)
     for project_id in project_ids:
         download_pdfs_from_project_page(project_id)
 
