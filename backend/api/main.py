@@ -27,8 +27,8 @@ async def testTask():
     return JSONResponse({"task_id": task.id})
 
 
-@app.get("/incTest")
-async def incTest():
+@app.get("/gefTest")
+async def gefTest():
     task = celery_tasks.gefTest.delay()
     return JSONResponse({"task_id": task.id})
 

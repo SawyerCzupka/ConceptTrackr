@@ -43,7 +43,7 @@ def add(x=1, y=5):
 @celery_app.task(base=GEFTask, bind=True, name="GEF Test")
 def gefTest(self: task):
     self.gef.countOccurrences()
-    return self.increment
+    return f"SUCCESS: {self.increment}"
 
 
 if __name__ == "__main__":

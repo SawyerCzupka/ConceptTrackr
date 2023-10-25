@@ -1,8 +1,8 @@
 import logging
 import os
-import uuid
 from typing import List
-from concurrent.futures import ProcessPoolExecutor, as_completed
+import dask.bag as db
+from dask import compute
 
 from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
 
@@ -12,34 +12,30 @@ class DocumentLoader:
         self.pdfLoader = pdfLoader
 
     def load_pdf(self, path, documentID=None) -> List:
-        docs = self.pdfLoader(path).load()
-
-        if documentID:
-            [doc.metadata.update({'documentID': documentID}) for doc in docs]
-
-        return docs
+        try:
+            docs = self.pdfLoader(path).load()
+            logging.info(f"Successfully loaded {len(docs)} documents from {path}")
+            if documentID:
+                [doc.metadata.update({'documentID': documentID}) for doc in docs]
+            return docs
+        except Exception as e:
+            logging.error(f"Error processing file '{path}' with loader: {e}")
+            return []
 
     def load_pdfs(self, directory):
-        file_docs = []
-        pdf_files = [file for file in os.listdir(directory) if file.endswith(".pdf")]
-        total_files = len(pdf_files)
+        pdf_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith(".pdf")]
 
-        with ProcessPoolExecutor() as executor:
-            future_to_file = {executor.submit(self.load_pdf, str(directory + file), documentID=None): file for file in pdf_files}
+        logging.info(f"Found {len(pdf_files)} PDF files in {directory}")
 
-            # Track the number of completed tasks
-            completed_files = 0
+        # Use dask.bag to create a bag of tasks
+        bag = db.from_sequence(pdf_files).map(self.load_pdf)
 
-            for future in as_completed(future_to_file):
-                file = future_to_file[future]
-                try:
-                    file_docs.extend(future.result())
+        # Compute in parallel
+        results = compute(bag)[0]
 
-                    # Increment the completed_files count and display progress
-                    completed_files += 1
-                    logging.info(f"Processed {completed_files}/{total_files} files")
+        # Flatten the list of lists into a single list
+        file_docs = [item for sublist in results for item in sublist]
 
-                except Exception as e:
-                    logging.error(f"Error loading file '{file}': {e}")
+        logging.info(f"Completed processing all PDF files. Total documents loaded: {len(file_docs)}")
 
         return file_docs
