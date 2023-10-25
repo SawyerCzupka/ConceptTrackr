@@ -2,10 +2,11 @@ import logging
 import os
 from typing import List
 import dask.bag as db
-from dask import compute
+from dask import compute, distributed
+
 from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
 
-# Configure logging
+
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -16,7 +17,6 @@ class DocumentLoader:
         self.pdfLoader = pdfLoader
 
     def load_pdf(self, path, documentID=None) -> List:
-        logging.info(f"Start loading PDF from {path}")
         try:
             docs = self.pdfLoader(path).load()
             logging.info(f"Successfully loaded {len(docs)} documents from {path}")
@@ -35,6 +35,10 @@ class DocumentLoader:
         ]
 
         logging.info(f"Found {len(pdf_files)} PDF files in {directory}")
+
+        # Set up Dask client and start the dashboard
+        client = distributed.Client()
+        logging.info(f"Serving dask dashboard at {client.dashboard_link}")
 
         # Use dask.bag to create a bag of tasks
         bag = db.from_sequence(pdf_files).map(self.load_pdf)
