@@ -17,12 +17,15 @@ def get_project_ids_from_csv(path):
         next(reader)  # Skip the header row
 
         for row in reader:
-            year = int(
-                row[9]
-            )  # Assuming the year is in the 10th column, indexed from 0
-            if year in INTERESTED_YEARS:
-                project_id = row[1]  # Assuming the ID is in the 2nd column
-                project_ids.append(project_id)
+            try:
+                year = int(
+                    row[9]
+                )  # Assuming the year is in the 10th column, indexed from 0
+                if year in INTERESTED_YEARS:
+                    project_id = row[1]  # Assuming the ID is in the 2nd column
+                    project_ids.append(project_id)
+            except:
+                continue
 
     return project_ids
 
