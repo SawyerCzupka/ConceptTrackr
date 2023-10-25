@@ -3,8 +3,12 @@ import os
 from typing import List
 import dask.bag as db
 from dask import compute
-
 from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 class DocumentLoader:
@@ -12,18 +16,23 @@ class DocumentLoader:
         self.pdfLoader = pdfLoader
 
     def load_pdf(self, path, documentID=None) -> List:
+        logging.info(f"Start loading PDF from {path}")
         try:
             docs = self.pdfLoader(path).load()
             logging.info(f"Successfully loaded {len(docs)} documents from {path}")
             if documentID:
-                [doc.metadata.update({'documentID': documentID}) for doc in docs]
+                [doc.metadata.update({"documentID": documentID}) for doc in docs]
             return docs
         except Exception as e:
             logging.error(f"Error processing file '{path}' with loader: {e}")
             return []
 
     def load_pdfs(self, directory):
-        pdf_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith(".pdf")]
+        pdf_files = [
+            os.path.join(directory, file)
+            for file in os.listdir(directory)
+            if file.endswith(".pdf")
+        ]
 
         logging.info(f"Found {len(pdf_files)} PDF files in {directory}")
 
@@ -36,6 +45,8 @@ class DocumentLoader:
         # Flatten the list of lists into a single list
         file_docs = [item for sublist in results for item in sublist]
 
-        logging.info(f"Completed processing all PDF files. Total documents loaded: {len(file_docs)}")
+        logging.info(
+            f"Completed processing all PDF files. Total documents loaded: {len(file_docs)}"
+        )
 
         return file_docs
