@@ -2,7 +2,7 @@ import logging
 import os
 from typing import List
 import dask.bag as db
-from dask import compute, distributed
+from dask import compute, distributed, delayed
 
 from langchain.document_loaders import PDFPlumberLoader, PyPDFium2Loader
 
@@ -12,11 +12,27 @@ logging.basicConfig(
 )
 
 
+def pdf_file_generator(directory: str):
+    for file in os.listdir(directory):
+        if file.endswith(".pdf"):
+            yield os.path.join(directory, file)
+
+
 class DocumentLoader:
     def __init__(self, pdfLoader=PDFPlumberLoader):
         self.pdfLoader = pdfLoader
 
+    def pdfs_generator(self, directory):
+        pdf_files = [
+            os.path.join(directory, file)
+            for file in os.listdir(directory)
+            if file.endswith(".pdf")
+        ]
+        return pdf_files
+
+    @delayed
     def load_pdf(self, path, documentID=None) -> List:
+        logging.info(f"Starting to load PDF: {path}")
         try:
             docs = self.pdfLoader(path).load()
             logging.info(f"Successfully loaded {len(docs)} documents from {path}")
@@ -54,3 +70,12 @@ class DocumentLoader:
         )
 
         return file_docs
+
+    def load_pdfs_lazy(self, directory):
+        pdf_files = [
+            os.path.join(directory, file)
+            for file in os.listdir(directory)
+            if file.endswith(".pdf")
+        ]
+        logging.info(f"Found {len(pdf_files)} PDF files in {directory}")
+        return db.from_sequence(pdf_files).map(self.load_pdf)

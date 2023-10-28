@@ -16,7 +16,7 @@ from gef_analyzr.prompts import (
     END_SYS,
     END_INST,
 )
-from langchain import PromptTemplate
+from langchain.prompts import PromptTemplate
 from qdrant_client.http import models
 from langchain.chains.combine_documents.base import BaseCombineDocumentsChain
 

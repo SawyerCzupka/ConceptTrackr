@@ -7,5 +7,10 @@
 </template>
 
 <script setup lang="ts">
-  const props = defineProps(["text_data"]);
+const props = defineProps({
+  text_data: {
+    type: String,
+    required: true,
+  },
+});
 </script>

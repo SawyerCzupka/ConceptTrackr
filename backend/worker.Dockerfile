@@ -11,7 +11,7 @@ WORKDIR /app
 COPY worker-requirements.txt .
 COPY libraries ./libraries
 
-RUN pip install --no-cache-dir -r worker-requirements.txt
+RUN pip install --no-cache-dir -r worker-requirements_bac.txt
 
 # Multi stage build reduces image size by ~2GB
 FROM python:${PYTHON_VERSION} AS build

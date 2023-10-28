@@ -47,7 +47,5 @@ def gefTest(self: task):
 
 
 if __name__ == "__main__":
-    worker = celery_app.Worker(
-        include=['']
-    )
-    celery_app.start(['worker', '-A', 'celery_tasks'])
+    worker = celery_app.Worker(include=[""])
+    celery_app.start(["worker", "-A", "celery_tasks"])

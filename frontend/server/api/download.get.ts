@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   try {
     const response = await axios.request({
-      url: "http://127.0.0.1:8000/testFileDownload",
+      url: "http://127.0.0.1:8888/testFileDownload",
       responseType: "arraybuffer",
     });
 

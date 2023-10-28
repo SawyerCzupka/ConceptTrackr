@@ -2,7 +2,7 @@
 This file contains all the logic for interacting with a Qdrant database and embedding new points into the database
 """
 from typing import List
-
+from dask import delayed
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
@@ -53,10 +53,21 @@ class QdrantDatabase:
             ),
         )
 
+    @delayed
     def add_documents(self, documents: List[Document]):
+        chunks = self.chunk_documents(documents)
+        embeds = self._encode(
+            [chunk.page_content for chunk in chunks], show_progress_bar=True
+        )
+
+        self.add_elements(chunks, embeds)
+
+    def process_and_add_documents(self, document):
         self.create_collection()
 
-        chunks = self.chunk_documents(documents)
+        chunks = self.chunk_documents(
+            [document]
+        )  # since we are processing one document at a time
         embeds = self._encode(
             [chunk.page_content for chunk in chunks], show_progress_bar=True
         )

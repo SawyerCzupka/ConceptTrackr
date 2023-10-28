@@ -1,7 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss",
+    '@pinia/nuxt'
+  ],
+  pinia: {},
   build: {
     transpile: ["vuetify"],
   },

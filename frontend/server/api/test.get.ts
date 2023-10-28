@@ -1,9 +1,8 @@
-import { useFetch } from "nuxt/app";
 import axios from "axios";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   try {
-    const response = await axios.get("http://127.0.0.1:8000/lorem");
+    const response = await axios.get("http://127.0.0.1:8888/lorem");
     // console.log(response.data);
     return response.data; // Return the data obtained from the API call
   } catch (error) {
