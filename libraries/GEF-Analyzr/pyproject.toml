@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "gef_analyzr"
+version = "0.6.0"
+description = ""
+authors = ["Sawyer <sawyerczupka@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+langchain = "^0.0.327"
+qdrant-client = "^1.6.4"
+pdfplumber = "^0.10.3"
+sentence-transformers = "^2.2.2"
+pathlib = "^1.0.1"
+dask = "^2023.10.1"
+distributed = "^2023.10.1"
+python-dotenv = "^1.0.0"
+torch = ">=2.0.0, !=2.0.1, !=2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

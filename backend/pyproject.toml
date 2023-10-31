@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "backend services for ConceptTrackr"
+authors = ["Sawyer <sawyerczupka@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "~3.11"
+fastapi = "^0.104.1"
+celery = "^5.3.4"
+uvicorn = "^0.23.2"
+qdrant-client = "^1.6.4"
+sentence-transformers = "^2.2.2"
+python-dotenv = "^1.0.0"
+langchain = "^0.0.327"
+pandas = "^2.1.2"
+redis = "^5.0.1"
+pdfplumber = "^0.10.3"
+dask = "^2023.10.1"
+distributed = "^2023.10.1"
+bokeh = "^3.3.0"
+gef-analyzr = { path = "../libraries/GEF-Analyzr", develop = true }
+flower = { git = "https://github.com/shipwell/flower.git" }
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.10.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

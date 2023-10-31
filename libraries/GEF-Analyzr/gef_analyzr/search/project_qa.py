@@ -4,7 +4,7 @@ documents. This is intended to be used to programmatically fill out project anal
 """
 from typing import Literal
 
-from langchain.vectorstores import VectorStore
+from langchain.schema.vectorstore import VectorStore
 from langchain.llms.base import LLM
 from langchain.chains.question_answering import load_qa_chain
 from gef_analyzr.prompts import (

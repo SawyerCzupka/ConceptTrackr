@@ -17,7 +17,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app/frontend
       - /app/node_modules
 
   fastapi:
@@ -28,6 +28,8 @@ services:
       - "8888:8111"
     command: python main.py
     restart: unless-stopped
+    volumes:
+      - ./backend:/app/backend
 
   worker:
     depends_on:
